@@ -1,0 +1,40 @@
+# Validation rules
+
+Name must be a string less than 255 charcters
+
+$validatedData = $request->validate([
+ 'name' => ['max:255', 'string', 'required']
+)];
+
+HP must be an int
+
+'HP' => ['integer', 'required']
+
+intger
+required
+
+All stats must be int. Must be positive. Must be less than 30
+
+'base_str' => ['max:30', 'integer', 'required', 'gte:1'],
+'base_dex' => ['max:30', 'integer', 'required', 'gte:1'],
+'base_con' => ['max:30', 'integer', 'required', 'gte:1'],
+'base_int' => ['max:30', 'integer', 'required', 'gte:1'],
+'base_wis' => ['max:30', 'integer', 'required', 'gte:1'],
+'base_cha' => ['max:30', 'integer', 'required', 'gte:1'],
+
+max:30
+integer
+required
+
+Class must exist in the DB.
+
+'class' => ['exists:character_classes', 'integer', 'required'],
+'races' => ['exists:races', 'integer', 'required'],
+integer
+exists:character_classes
+required
+
+Race must exist in the DB.
+integer
+exists:races
+required

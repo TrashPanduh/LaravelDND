@@ -16,7 +16,7 @@ class CharacterRaceSeeder extends Seeder
     public function run()
     {
         $races = collect([
-            "Elf", "Gnome"
+            "Human", "Elf", "Half-elf", "Gnome", "Goliath"
         ]);
 
         $races->each(function ($race) {

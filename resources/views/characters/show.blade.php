@@ -28,20 +28,7 @@
                 </li>
             @endforeach
         </ul>
-        <h1>Items</h1>
-        <ul>
-            @foreach ($character->items as $item)
-                <li>
-                    {{ $item->name }}
-                </li>
-            @endforeach
-        </ul>
-
-        // add items here
-
-        <a href="{{ route('characters.items.create', ['character' => $character->id]) }}">+ Add New Item</a>
-
-
+        
         <h1>Stats</h1>
         <ul>
             <li>STR: {{$character->str}}</li>
@@ -51,5 +38,39 @@
             <li>WIS: {{$character->wis}}</li>
             <li>CHA: {{$character->cha}}</li>
         </ul>
+
+        <h1>Items</h1>
+        
+        // add items here
+
+        <br>
+        <ul>
+            @foreach ($groupedItems as $itemName => $count)
+                <li>
+                    
+                    {{ $itemName }} @if($count > 1)x{{ $count }}@endif
+
+                    @if($count > 1)
+                        <form action="{{ route('characters.items.removeOne', [$character->id, $itemName]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" value="Remove One">
+                        </form>
+                        <form action="{{ route('characters.items.removeAll', [$character->id, $itemName]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" value="Remove All">
+                        </form>
+                    @else
+                        <button>Remove</button>
+                    @endif
+                </li>
+            @endforeach
+        </ul>
+        Capacity:
+        <br>
+        {{ $inventory }} / {{ $capacity }}
+        <br>
+        <a href="{{ route('characters.items.create', ['character' => $character->id]) }}" >+ Add New Item</a>
     </body>
 </html>

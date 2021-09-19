@@ -18,6 +18,7 @@ class CreateCharacterClassAssignmentsTable extends Migration
             $table->timestamps();
             $table->integer('character_id');
             $table->integer('character_class_id');
+            $table->integer('class_level')->default(0);
         });
     }
 

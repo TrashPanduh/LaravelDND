@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Item extends Model
+class Modifier extends Model
 {
     use HasFactory;
-
+    
     protected $guarded = [];
-    protected $table = 'items';
+    protected $table = 'characters';
 
-    public function owners()
+    public function modify()
     {
-        return $this->belongsToMany(Character::class, 'character_items');
+        return $this->belongsToMany(Character::class, 'characters');
     }
 }

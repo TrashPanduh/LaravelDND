@@ -22,6 +22,7 @@ class CreateCharactersTable extends Migration
             $table->integer('base_wis')->default(10);
             $table->integer('base_int')->default(10);
             $table->integer('base_cha')->default(10);
+            $table->string('first_class')->default('none');
         });
     }
 

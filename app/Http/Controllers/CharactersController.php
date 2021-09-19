@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Item;
 use App\Models\Race;
 use App\Models\Character;
 use Illuminate\Http\Request;
+use App\Models\CharacterItem;
 use App\Models\CharacterClass;
 use Illuminate\Support\Facades\Validator;
 
@@ -85,10 +87,39 @@ class CharactersController extends Controller
         return redirect(route('characters.show', $character->id));
     }
 
-    public function show(Character $character)
+    public function show(Character $character,Request $request, CharacterItem $characterItem)
     {
+        // $groupedItems = $character->items->countBy(function ($item) {
+        // return $item->name;
+        // });
+
+        $groupedItems = $character->items->countBy(function ($item) {
+            return $item->name;
+        });
+        
+        $collection = $character->items->sum('weight');
+
+        $capacity = $character->base_str * 10;
+
         return view('characters.show', [
-            'character' => $character
+            'character' => $character,
+            'groupedItems' => $groupedItems,
+            'inventory' => $collection,
+            'capacity' => $capacity
         ]);
     }
+
+    public function weigh(Request $request, Character $character, CharacterItem $characterItem)
+    {
+       
+
+    }
+
+    // public function showCounts(Request $request, Character $character, Item $item)
+    // {
+
+    //     $collection = collect([$groupedItems]);
+        
+    //     $counted->all();
+    // }
 }

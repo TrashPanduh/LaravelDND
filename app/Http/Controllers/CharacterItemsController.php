@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use App\Models\Character;
+use App\Models\CharacterItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -25,7 +26,8 @@ class CharacterItemsController extends Controller
         $validatedData = Validator::make(
             $request->all(),
             [
-                'item_id' => ['integer', 'min:1', 'exists:items,id']
+                'item_id' => ['integer', 'min:1', 'exists:items,id'],
+                'capcity' => ['gte:inventory']
             ]
         )->validate();
 
@@ -33,6 +35,13 @@ class CharacterItemsController extends Controller
         $character->items()->save($item);
 
         return redirect()->route('characters.show', $character);
+    }
+
+    public function remove(Request $request, Character $character, CharacterItem $characterItem)
+    {
+        $characterItem->delete();
+
+        return redirect()->back();
     }
 }
 

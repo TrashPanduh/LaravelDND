@@ -18,15 +18,16 @@ class CreateItemsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->integer('weight')->default(1);
+            $table->float('weight')->default(1);
             $table->boolean('magical')->default(false);
             $table->string('magic_type')->nullable();
+            $table->string('sub_type')->nullable();
+            $table->integer('range')->nullable();
+            $table->integer('max_range')->nullable();
         });
     }
     
-    
 
-    
     public function down()
     {
         Schema::dropIfExists('items');

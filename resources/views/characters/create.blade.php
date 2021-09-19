@@ -21,13 +21,14 @@
             <x-text-input slug="base_cha" label="Charisma" type="number" value="10"/>
             <div>
                 <label for="character-class">Standard class</label>
+                // Need to write a function to take this class and enter it into 'inital class'
                 <div class="select">
                     <select id="character-class" name="character-class">
                         @foreach ($character_classes as $character_class)
                         <option value="{{$character_class->id}}">{{$character_class->name}}</option>
                         @endforeach
                     </select></div>
-                    
+
                     // for picking a race
                     <label for="race">Race</label>
                 <div class="select">

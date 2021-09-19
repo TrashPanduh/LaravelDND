@@ -21,6 +21,11 @@ class Character extends Model
         return $this->belongsToMany(CharacterClass::class, 'character_class_assignments');
     }
 
+    public function characterItems()
+    {
+        return $this->hasMany(CharacterItem::class);
+    }
+    
     public function items()
     {
         return $this->belongsToMany(Item::class, 'character_items');

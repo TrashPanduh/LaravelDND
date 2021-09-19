@@ -19,7 +19,9 @@
 
         <form action="{{ route('items.store') }}" method="POST">
             @csrf
-            <x-text-input slug="item" label="Add Item"/>
+            <x-text-input slug="name" label="Add Item"/>
+            
+            <x-text-input slug="weight" label="Item Weight"/>
             <input type="submit" value="submit">
         </form>
         

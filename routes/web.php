@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\CharactersController;
+use App\Http\Controllers\ItemRemovalController;
 use App\Http\Controllers\CharacterItemsController;
 
 /*
@@ -33,13 +34,18 @@ Route::get('/', function () {
 Route::prefix('characters')->name('characters.')->group(function () {
     Route::get('new', [CharactersController::class, 'create'])->name('create');
     Route::post('/', [CharactersController::class, 'store'])->name('store');
+    Route::get('/{character}', [CharacterItemsController::class, 'weigh'])->name('weigh');
 
     Route::prefix('{character}/items')->name('items.')->group(function () {
         Route::get('new', [CharacterItemsController::class, 'create'])->name('create');
         Route::post('/', [CharacterItemsController::class, 'store'])->name('store');
+        Route::get('/', [CharacterItemsController::class, 'inventory'])->name('inventory');
+        Route::delete('/{characterItem}', [CharacterItemsController::class, 'remove'])->name('delete');
+        Route::delete('/{item:name}/one', [ItemRemovalController::class, 'removeOne'])->name('removeOne');
+        Route::delete('/{item:name}/all', [ItemRemovalController::class, 'removeAll'])->name('removeAll');
+        Route::get('/weigh', [CharacterItemsController::class, 'weigh'])->name('weigh');
     });
 });
-
 
 Route::prefix('items')->name('items.')->group(function () {
     Route::post('/', [ItemsController::class, 'store'])->name('store');
@@ -47,6 +53,7 @@ Route::prefix('items')->name('items.')->group(function () {
 
 
 Route::get('/characters/{character}', [CharactersController::class, 'show'])->name('characters.show');
+
 Route::get('characters/add', [RaceController::class, 'create']);
 
 

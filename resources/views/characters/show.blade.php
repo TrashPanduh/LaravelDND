@@ -31,7 +31,7 @@
         
         <h1>Stats</h1>
         <ul>
-            <li>STR: {{$character->str}}</li>
+            <li>STR: {{$character->str}} ({{ $character->str_modifier }})</li>
             <li>DEX: {{$character->dex}}</li>
             <li>CON: {{$character->con}}</li>
             <li>INT: {{$character->int}}</li>
@@ -39,6 +39,10 @@
             <li>CHA: {{$character->cha}}</li>
         </ul>
 
+        <h1>Skills</h1>
+        <ul>
+            <li>Acrobatics: {{ $character->skillModifier('acrobatics') }}</li>
+        </ul>
         <h1>Items</h1>
         
         // add items here
@@ -70,6 +74,7 @@
         Capacity:
         <br>
         {{ $inventory }} / {{ $capacity }}
+            
         <br>
         <a href="{{ route('characters.items.create', ['character' => $character->id]) }}" >+ Add New Item</a>
     </body>

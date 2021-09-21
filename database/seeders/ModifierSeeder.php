@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\Modifier;
 use Illuminate\Database\Seeder;
 
-class StatModifierSeeder extends Seeder
+class ModifierSeeder extends Seeder
 {
     public function run()
     {

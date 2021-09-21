@@ -27,7 +27,6 @@ class CharacterItemsController extends Controller
             $request->all(),
             [
                 'item_id' => ['integer', 'min:1', 'exists:items,id'],
-                'capcity' => ['gte:inventory']
             ]
         )->validate();
 

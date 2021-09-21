@@ -30,6 +30,7 @@ Route::get('/', function () {
 // PUT/PATCH update (save the thing from the edit form)
 // DELETE delete (remove the thing)
 
+Route::get('/allcharacters', [CharactersController::class, 'showAll'])->name('showAll');
 
 Route::prefix('characters')->name('characters.')->group(function () {
     Route::get('new', [CharactersController::class, 'create'])->name('create');

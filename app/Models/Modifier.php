@@ -10,7 +10,7 @@ class Modifier extends Model
     use HasFactory;
     
     protected $guarded = [];
-    protected $table = 'characters';
+    protected $table = 'Modifiers';
 
     public function modify()
     {

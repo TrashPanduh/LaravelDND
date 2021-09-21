@@ -18,6 +18,6 @@ class CreateModifiersTable extends Migration
   
     public function down()
     {
-        Schema::dropIfExists('stats_pivot');
+        Schema::dropIfExists('modifiers');
     }
 }

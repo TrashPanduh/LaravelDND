@@ -13,6 +13,7 @@ class CreateCharactersTable extends Migration
             $table->timestamps();
             $table->string('name');
             $table->integer('race_id');
+            $table->integer('level')->default(1);
             $table->integer('HP');
             $table->integer('AC')->default(11); // can the default be a formula like 11 +
             $table->integer('death_saves')->default(0);
@@ -22,7 +23,9 @@ class CreateCharactersTable extends Migration
             $table->integer('base_wis')->default(10);
             $table->integer('base_int')->default(10);
             $table->integer('base_cha')->default(10);
-            $table->string('first_class')->default('none');
+            $table->string('first_class')->nullable();
+            $table->json('proficiencies')->nullable();
+            $table->json('expertise')->nullable();
         });
     }
 

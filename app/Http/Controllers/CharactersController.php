@@ -89,10 +89,7 @@ class CharactersController extends Controller
 
     public function show(Character $character,Request $request, CharacterItem $characterItem)
     {
-        // $groupedItems = $character->items->countBy(function ($item) {
-        // return $item->name;
-        // });
-
+    
         $groupedItems = $character->items->countBy(function ($item) {
             return $item->name;
         });
@@ -109,17 +106,13 @@ class CharactersController extends Controller
         ]);
     }
 
+    public function showAll(Request $request, Character $character)
+    {
+        return view('/allcharacters');
+    }
+
     public function weigh(Request $request, Character $character, CharacterItem $characterItem)
     {
        
-
     }
-
-    // public function showCounts(Request $request, Character $character, Item $item)
-    // {
-
-    //     $collection = collect([$groupedItems]);
-        
-    //     $counted->all();
-    // }
 }

@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
             CharacterClassSeeder::class,
             ItemSeeder::class,
             CharacterRaceSeeder::class,
-            StatModifierSeeder::class,
+            ModifierSeeder::class,
         ]);
     }
 }

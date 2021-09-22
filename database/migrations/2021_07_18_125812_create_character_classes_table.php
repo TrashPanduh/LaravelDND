@@ -17,6 +17,7 @@ class CreateCharacterClassesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
+            $table->integer('hit_die')->default(8);
         });
     }
 

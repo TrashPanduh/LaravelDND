@@ -21,7 +21,7 @@ class Character extends Model
     ];
 
     public $modifiers = [ -5, -5, -4, -4, -3, -3, -2, -2, -1, -1, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 6, 6, 6, 7, 7, 8, 8, 9, 9, 10];
-    public $proficiencyBonus = [ 3, 3, 3, 4];
+    public $proficiencyBonus = [ 0, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6];
 
     // Relationships
 
@@ -50,18 +50,67 @@ class Character extends Model
         return $this->belongsTo(Race::class);
     }
 
-    // Accessors
+    // Accessors for attributes
 
     public function getStrAttribute()
     {
-        return $this->base_str;
+        return $this->base_str + $this->race->str_mod;
         // return $this->base_str + $this->race->str_mod + $this->class->str_mod + $this->items->sum('str_mod');
+    }
 
+    public function getDexAttribute()
+    {
+        return $this->base_dex + $this->race->dex_mod;
+    }
+    
+    public function getConAttribute()
+    {
+        return $this->base_con + $this->race->con_mod;
+    }
+    
+    public function getIntAttribute()
+    {
+        return $this->base_int + $this->race->int_mod;
+    }
+    
+    public function getWisAttribute()
+    {
+        return $this->base_wis + $this->race->wis_mod;
+    }
+    
+    public function getChaAttribute()
+    {
+        return $this->base_cha + $this->race->cha_mod;
+    }
+    // Modifier Accessors
+    public function getHpModifierAttribute()
+    {
+        return $this->HP + $this->modifiers[min(30,  $this->con)];
     }
 
     public function getStrModifierAttribute()
     {
         return $this->modifiers[min(30,  $this->str)];
+    }
+    public function getDexModifierAttribute()
+    {
+        return $this->modifiers[min(30,  $this->dex)];
+    }
+    public function getConModifierAttribute()
+    {
+        return $this->modifiers[min(30,  $this->con)];
+    }
+    public function getIntModifierAttribute()
+    {
+        return $this->modifiers[min(30,  $this->int)];
+    }
+    public function getWisModifierAttribute()
+    {
+        return $this->modifiers[min(30,  $this->wis)];
+    }
+    public function getChaModifierAttribute()
+    {
+        return $this->modifiers[min(30,  $this->cha)];
     }
 
     public function getProfBonusAttribute()
@@ -85,29 +134,19 @@ class Character extends Model
 
         return $base + $prof_bonus + $expertise_bonus;
     }
+    // write a function for 'swim_speed' to be displayed
 
-    public function getDexAttribute()
+    // write a function for armor class
+
+    // write a relationship and function for adding a background
+
+    //write a function to add a proficieny in the json format on character
+
+    // write the relationships for adding a prof for race and background
+
+
+    public function getArmorClassAttribute()
     {
-        return $this->base_dex;
-    }
-    
-    public function getConAttribute()
-    {
-        return $this->base_con;
-    }
-    
-    public function getIntAttribute()
-    {
-        return $this->base_int;
-    }
-    
-    public function getWisAttribute()
-    {
-        return $this->base_wis;
-    }
-    
-    public function getChaAttribute()
-    {
-        return $this->base_cha;
+        return $this->dex_modifier + 8;
     }
 }

@@ -1,0 +1,23 @@
+proficiencies = [
+    {
+        id: 1,
+        characterId: 2,
+        skill: acrobatics
+        expertise: true
+    },
+    {
+        id: 2,
+        characterId: 2,
+        skill: thieving
+        expertise: false
+    },
+];
+
+proficiencies = [
+    {
+        id: 1,
+        characterId: 2,
+        proficiency: acrobatics, deception, history, stealth
+        expertise: survival
+    },
+

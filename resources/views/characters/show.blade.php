@@ -14,11 +14,20 @@
 
         <h1>Race</h1>
         <ul>
-           {{ $character->race->race }}
+        {{ $character->race->subrace }}
         </ul>
-        
+        <h1>Armor Class</h1>
+        <ul>
+        {{ $character->ArmorClass }}
+        </ul>
+        <ul>
+
+        <h1>Speed:</h1>
+        {{ $character->race->walking_speed }}
+        </ul>
+
         <h1>Hit Points</h1>
-        {{ $character->HP }}
+        {{ $character->Hpmodifier }}
         
         <h1>Classes</h1>
         <ul>
@@ -26,22 +35,40 @@
                 <li>
                     {{ $characterClass->name }}
                 </li>
+
             @endforeach
         </ul>
         
         <h1>Stats</h1>
         <ul>
             <li>STR: {{$character->str}} ({{ $character->str_modifier }})</li>
-            <li>DEX: {{$character->dex}}</li>
-            <li>CON: {{$character->con}}</li>
-            <li>INT: {{$character->int}}</li>
-            <li>WIS: {{$character->wis}}</li>
-            <li>CHA: {{$character->cha}}</li>
+            <li>DEX: {{$character->dex}} ({{ $character->dex_modifier }})</li>
+            <li>CON: {{$character->con}} ({{ $character->con_modifier }})</li>
+            <li>INT: {{$character->int}} ({{ $character->int_modifier }})</li>
+            <li>WIS: {{$character->wis}} ({{ $character->wis_modifier }})</li>
+            <li>CHA: {{$character->cha}} ({{ $character->cha_modifier }})</li>
         </ul>
 
         <h1>Skills</h1>
         <ul>
-            <li>Acrobatics: {{ $character->skillModifier('acrobatics') }}</li>
+                <li>Acrobatics (Dex): {{ $character->skillModifier('acrobatics') }}</li>
+                <li>Animal Handling (Wis): {{ $character->skillModifier('animal_handling') }}</li>
+                <li>Arcana: {{ $character->skillModifier('arcana') }}</li>
+                <li>Athletics: {{ $character->skillModifier('athletics') }}</li>
+                <li>Deception: {{ $character->skillModifier('deception') }}</li>
+                <li>History: {{ $character->skillModifier('history') }}</li>
+                <li>Insights: {{ $character->skillModifier('insight') }}</li>
+                <li>Intimidation: {{ $character->skillModifier('intimidation') }}</li>
+                <li>Investion: {{ $character->skillModifier('investigation') }}</li>
+                <li>Medicine: {{ $character->skillModifier('medicine') }}</li>
+                <li>Nature: {{ $character->skillModifier('nature') }}</li>
+                <li>Perception: {{ $character->skillModifier('perception') }}</li>
+                <li>Performance: {{ $character->skillModifier('performance') }}</li>
+                <li>Persuasion: {{ $character->skillModifier('persuasion') }}</li>
+                <li>Religion: {{ $character->skillModifier('religion') }}</li>
+                <li>Sleight of Hand: {{ $character->skillModifier('sleight_of_hand') }}</li>
+                <li>Stealth: {{ $character->skillModifier('stealth') }}</li>
+                <li>Survival: {{ $character->skillModifier('survival') }}</li>
         </ul>
         <h1>Items</h1>
         

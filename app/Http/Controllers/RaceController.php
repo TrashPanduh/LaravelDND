@@ -28,5 +28,4 @@ class RaceController extends Controller
         return redirect(route('characters.show', $character->id));
     }
 
-
 }

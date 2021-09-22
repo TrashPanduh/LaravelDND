@@ -17,6 +17,10 @@ class CreateRacesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('race');
+            $table->string('subrace')->nullable;
+            $table->string('size')->default('medium');
+            $table->integer('walking_speed')->default(30);
+            $table->integer('swim_speed')->nullable();
             $table->integer('str_mod')->default(0);
             $table->integer('dex_mod')->default(0);
             $table->integer('con_mod')->default(0);

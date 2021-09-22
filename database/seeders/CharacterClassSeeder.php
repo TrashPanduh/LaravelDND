@@ -15,7 +15,7 @@ class CharacterClassSeeder extends Seeder
     public function run()
     {
         $classNames = collect([
-            "Bard", "Barbarian"
+            "Bard", "Barbarian", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizrard"
         ]);
 
         $classNames->each(function ($className) {
@@ -23,6 +23,6 @@ class CharacterClassSeeder extends Seeder
                 'name' => $className
             ]);
         });
-        
+                
     }
 }
